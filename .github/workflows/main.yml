@@ -29,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
            name: Depcheck report
-           path: ${{github.workspace}}/reports
+           path: factchecker2022/spring-petclinic/reports
