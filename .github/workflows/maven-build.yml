@@ -28,6 +28,6 @@ jobs:
         uses: actions/upload-artifact@master
         with:
            name: SBOM report
-           path: ${{ github.workspace }}/reports
+           path: ${{ github.workspace }}
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
