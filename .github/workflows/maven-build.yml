@@ -23,7 +23,7 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Generate SBOM
-        run: ./mvn dependency:analyze-report
+        run: ./mvnw dependency:analyze-report
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
