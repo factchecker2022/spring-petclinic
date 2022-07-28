@@ -23,11 +23,12 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Generate SBOM
-        run: ./mvnw dependency:analyze-report
+        #run: ./mvnw dependency:analyze-report
+        run: ./mvnw project-info-reports:dependencies
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
            name: SBOM report
-           path: ${{ github.workspace }}
+           path: ${{ github.workspace }}/target
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
