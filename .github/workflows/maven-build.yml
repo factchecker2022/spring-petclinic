@@ -22,5 +22,12 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: maven
+      - name: Generate SBOM
+        run: ./mvn dependency:analyze-report
+      - name: Upload Test results
+        uses: actions/upload-artifact@master
+        with:
+           name: SBOM report
+           path: ${{ github.workspace }}/reports
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
