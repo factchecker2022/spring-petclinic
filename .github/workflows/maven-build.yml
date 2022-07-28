@@ -31,8 +31,8 @@ jobs:
         run: ./mvnw project-info-reports:dependency-management
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
-      - name: Call a Bash Script
-        run:  bash ${GITHUB_WORKSPACE}/some.sh
+      #- name: Call a Bash Script
+      #  run:  bash ${GITHUB_WORKSPACE}/some.sh
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
