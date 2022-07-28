@@ -22,13 +22,17 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: maven
-      - name: Generate SBOM
+      - name: project-info-reports:dependencies
         #run: ./mvnw dependency:analyze-report
         run: ./mvnw project-info-reports:dependencies
+      - name: project-info-reports:dependency-convergence
+        run: ./mvnw project-info-reports:dependency-convergence
+      - name: project-info-reports:dependency-management
+        run: ./mvnw project-info-reports:dependency-management
       - name: Upload Test results
         uses: actions/upload-artifact@master
         with:
-           name: SBOM
-           path: ${{ github.workspace }}
+           name: SBOM ${GITHUB_REF##*/}
+           path: ${{ github.workspace }}/target/site
       - name: Build with Maven Wrapper
         run: ./mvnw -B package
